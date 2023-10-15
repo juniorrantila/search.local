@@ -12,7 +12,7 @@ mkdir -p ./dataset/index
 mkdir -p ./dataset/models
 
 mkdir -p ./vendor/whisper.cpp/build
-cmake -S ./vendor/whisper.cpp -B ./vendor/whisper.cpp/build
+cmake -S ./vendor/whisper.cpp -B ./vendor/whisper.cpp/build -G Ninja -DCMAKE_BUILD_TYPE=Release
 ninja -C ./vendor/whisper.cpp/build
 
 ./vendor/whisper.cpp/models/download-ggml-model.sh tiny.en

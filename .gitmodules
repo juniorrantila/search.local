@@ -1,3 +1,4 @@
 [submodule "vendor/whisper.cpp"]
 	path = vendor/whisper.cpp
 	url = git@github.com:ggerganov/whisper.cpp.git
+	branch = v1.4.2

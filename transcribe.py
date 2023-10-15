@@ -8,7 +8,9 @@ audio_files = [file for file in audio_files.difference(transcribed_files)]
 
 for i, file in enumerate(audio_files):
     print(f"{i}/{len(audio_files)}")
-    system(f"./vendor/whisper.cpp/build/bin/main -l en -osrt -f ./dataset/youtube/audio/{file} -m ./dataset/models/ggml-tiny.en.bin -of ./dataset/youtube/transcript-srt/{file}")
+    result = system(f"./vendor/whisper.cpp/build/bin/main -l en -osrt -f ./dataset/youtube/audio/{file} -m ./dataset/models/ggml-tiny.en.bin -of ./dataset/youtube/transcript-srt/{file}")
+    if result != 0:
+        exit(result)
     with open(f"./dataset/youtube/transcript-srt/{file}.srt") as f:
         lines = [e.content for e in srt.parse(f.read())]
     transcript = "".join(lines)
